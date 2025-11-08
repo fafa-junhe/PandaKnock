@@ -178,9 +178,9 @@ jobs:
         run: |
           ${{ env.CARGO }} build --verbose --release ${{ env.TARGET_FLAGS }}
           if [[ "${{ matrix.os }}" == windows-* ]]; then
-            bin="target/${{ matrix.target }}/release-lto/PandaKnock.exe"
+            bin="target/${{ matrix.target }}/release/PandaKnock.exe"
           else
-            bin="target/${{ matrix.target }}/release-lto/PandaKnock"
+            bin="target/${{ matrix.target }}/release/PandaKnock"
           fi
           echo "BIN=$bin" >> $GITHUB_ENV
 
