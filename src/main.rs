@@ -26,7 +26,7 @@ struct PandaKnocking<'a, Message> {
     close_ports: Vec<u16>,
     toasts: ToastContainer<'a, Message>,
     delay: u64,
-    is_knocking: bool,        // 新增状态：跟踪敲门过程是否正在进行
+    is_knocking: bool,        // 新增状态：跟踪敲门 过程是否正在进行
     is_close_requested: bool, // 是否用户点击了关闭按钮
 }
 
