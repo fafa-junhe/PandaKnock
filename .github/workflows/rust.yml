@@ -176,7 +176,7 @@ jobs:
       - name: Build release binary
         shell: bash
         run: |
-          ${{ env.CARGO }} build --verbose --profile release-lto ${{ env.TARGET_FLAGS }}
+          ${{ env.CARGO }} build --verbose --release ${{ env.TARGET_FLAGS }}
           if [[ "${{ matrix.os }}" == windows-* ]]; then
             bin="target/${{ matrix.target }}/release-lto/PandaKnock.exe"
           else
@@ -272,7 +272,7 @@ jobs:
         shell: bash
         run: |
           cargo build --target ${{ env.TARGET }}
-          bin="target/${{ env.TARGET }}/debug/rg"
+          bin="target/${{ env.TARGET }}/debug/PandaKnock"
           echo "BIN=$bin" >> $GITHUB_ENV
 
       - name: Create deployment directory
@@ -281,11 +281,6 @@ jobs:
           dir=deployment/deb
           mkdir -p "$dir"
           echo "DEPLOY_DIR=$dir" >> $GITHUB_ENV
-
-      - name: Generate man page
-        shell: bash
-        run: |
-          "$BIN" --generate man > "$DEPLOY_DIR/rg.1"
 
       - name: Build release binary
         shell: bash
